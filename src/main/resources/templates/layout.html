@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="~{::title}">Santana Auto Mecanica</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0b2340">
+</head>
+<body>
+<header class="site-header">
+    <div class="container">
+        <h1 class="brand">Santana Auto Mecânica</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/services">Serviços</a>
+            <a href="/admin">Admin</a>
+        </nav>
+    </div>
+    <div class="accent"></div>
+</header>
+
+<main class="container">
+    <div th:replace="~{::main}"></div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">© Santana Auto Mecânica — Em atividade desde 1975</div>
+</footer>
+
+</body>
+</html>

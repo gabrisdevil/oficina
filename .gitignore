@@ -1,0 +1,12 @@
+target/
+*.class
+.vscode/
+.idea/
+*.iml
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
+release.properties

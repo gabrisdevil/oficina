@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<title>Santana Auto Mecânica - Home</title>
+<main>
+    <section class="hero">
+        <h2>Bem-vindo à Santana Auto Mecânica</h2>
+        <p th:text="${history}"></p>
+    </section>
+
+    <section class="services-preview">
+        <h3>Principais Serviços</h3>
+        <ul>
+            <li th:each="s : ${services}">
+                <h4 th:text="${s.name}"></h4>
+                <p th:text="${s.description}"></p>
+                <p><strong>Categoria:</strong> <span th:text="${s.category}"></span> — <strong>Preço:</strong> R$ <span th:text="${s.price}"></span></p>
+            </li>
+        </ul>
+        <a class="btn" href="/services">Ver todos os serviços</a>
+    </section>
+</main>
+</html>
