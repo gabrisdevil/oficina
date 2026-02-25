@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout(~{::title}, ~{::main})">
 <title>Clientes - Admin</title>
 <main>
     <section>
@@ -13,6 +13,7 @@
                 <th>Telefone</th>
                 <th>Modelo</th>
                 <th>Serviço</th>
+                <th>Detalhes</th>
                 <th>Status</th>
                 <th>Atualizar</th>
             </tr>
@@ -25,6 +26,12 @@
                 <td th:text="${r.phone}"></td>
                 <td th:text="${r.carModel}"></td>
                 <td th:text="${r.requestedService}"></td>
+                <td>
+                    <form class="inline-form" th:action="@{'/admin/requests/' + ${r.id} + '/details'}" method="post">
+                        <input name="details" th:value="${r.details}" placeholder="Descreva o problema" />
+                        <button class="btn small" type="submit">Salvar</button>
+                    </form>
+                </td>
                 <td><span class="status" th:text="${r.status}"></span></td>
                 <td>
                     <form class="inline-form" th:action="@{'/admin/requests/' + ${r.id} + '/status'}" method="post">

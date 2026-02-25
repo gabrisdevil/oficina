@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout(~{::title}, ~{::main})">
 <title>Cadastro - Santana Auto Mecânica</title>
 <main>
     <section class="form-section">
@@ -15,7 +15,7 @@
             Cadastro enviado com sucesso. Protocolo: <strong th:text="${protocol}"></strong>.
         </div>
 
-        <form method="post" action="/cadastro" class="form-grid">
+        <form method="post" action="/cadastro" class="form-grid" id="cadastroForm">
             <label>Nome</label>
             <input name="nome" required />
 
@@ -29,14 +29,36 @@
             <input name="modelo" required />
 
             <label>Serviço desejado</label>
-            <select name="servico" required>
+            <select name="servico" required id="servicoSelect">
                 <option value="" selected disabled>Selecione um serviço</option>
                 <option th:each="s : ${services}" th:value="${s.name}" th:text="${s.name}"></option>
-                <option value="Outro serviço mecânico">Outro serviço mecânico</option>
+                <option value="Outros">Outros</option>
             </select>
+
+            <div id="servicoOutroWrap" style="display:none">
+                <label>Se escolheu "Outros", descreva o problema</label>
+                <textarea name="servicoOutro" id="servicoOutro" placeholder="Ex: barulho na suspensão, vazamento de óleo, etc."></textarea>
+            </div>
 
             <button class="btn" type="submit">Enviar cadastro</button>
         </form>
+        <script>
+            (function () {
+                var select = document.getElementById("servicoSelect");
+                var outro = document.getElementById("servicoOutroWrap");
+                var outroInput = document.getElementById("servicoOutro");
+                if (!select || !outro) return;
+                function toggle() {
+                    var show = select.value === "Outros";
+                    outro.style.display = show ? "block" : "none";
+                    if (!show) {
+                        if (outroInput) outroInput.value = "";
+                    }
+                }
+                select.addEventListener("change", toggle);
+                toggle();
+            })();
+        </script>
     </section>
 </main>
 </html>

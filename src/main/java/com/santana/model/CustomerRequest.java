@@ -13,17 +13,20 @@ public class CustomerRequest {
     private String phone;
     private String carModel;
     private String requestedService;
+    @Column(length = 2000)
+    private String details;
     private String status;
     private LocalDateTime createdAt;
 
     public CustomerRequest() {}
 
-    public CustomerRequest(String customerName, String plate, String phone, String carModel, String requestedService) {
+    public CustomerRequest(String customerName, String plate, String phone, String carModel, String requestedService, String details) {
         this.customerName = customerName;
         this.plate = plate;
         this.phone = phone;
         this.carModel = carModel;
         this.requestedService = requestedService;
+        this.details = details;
     }
 
     @PrePersist
@@ -47,6 +50,8 @@ public class CustomerRequest {
     public void setCarModel(String carModel) { this.carModel = carModel; }
     public String getRequestedService() { return requestedService; }
     public void setRequestedService(String requestedService) { this.requestedService = requestedService; }
+    public String getDetails() { return details; }
+    public void setDetails(String details) { this.details = details; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
     public LocalDateTime getCreatedAt() { return createdAt; }

@@ -65,4 +65,14 @@ public class AdminController {
         }
         return "redirect:/admin/requests";
     }
+
+    @PostMapping("/requests/{id}/details")
+    public String updateDetails(@PathVariable Long id, @RequestParam String details) {
+        CustomerRequest req = requestRepo.findById(id).orElse(null);
+        if (req != null) {
+            req.setDetails(details);
+            requestRepo.save(req);
+        }
+        return "redirect:/admin/requests";
+    }
 }

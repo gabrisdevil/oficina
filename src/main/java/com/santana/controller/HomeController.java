@@ -53,8 +53,13 @@ public class HomeController {
                             @RequestParam String telefone,
                             @RequestParam String modelo,
                             @RequestParam String servico,
+                            @RequestParam(required = false) String servicoOutro,
                             Model model) {
-        CustomerRequest req = new CustomerRequest(nome, placa, telefone, modelo, servico);
+        String detalhes = null;
+        if (servicoOutro != null && !servicoOutro.isBlank()) {
+            detalhes = servicoOutro;
+        }
+        CustomerRequest req = new CustomerRequest(nome, placa, telefone, modelo, servico, detalhes);
         requestRepo.save(req);
         model.addAttribute("success", true);
         model.addAttribute("protocol", req.getId());

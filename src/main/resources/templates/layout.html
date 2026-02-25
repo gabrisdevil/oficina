@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:replace="~{::title}">Santana Auto Mecanica</title>
+    <title th:replace="${title}">Santana Auto Mecanica</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#0b2340">
@@ -34,7 +34,7 @@
 </header>
 
 <main class="container main-content">
-    <div th:replace="~{::main}"></div>
+    <div th:replace="${content}"></div>
 </main>
 
 <footer class="site-footer">
