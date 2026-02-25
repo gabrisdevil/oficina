@@ -3,20 +3,46 @@
 <title>Santana Auto Mecânica - Home</title>
 <main>
     <section class="hero">
-        <h2>Bem-vindo à Santana Auto Mecânica</h2>
-        <p th:text="${history}"></p>
+        <div class="hero-text">
+            <h2>Manutenção mecânica com confiança e agilidade.</h2>
+            <p th:text="${history}"></p>
+            <div class="hero-actions">
+                <a class="btn" href="/cadastro">Fazer cadastro</a>
+                <a class="btn outline" href="/services">Ver serviços</a>
+            </div>
+            <div class="notice">
+                <strong>Atenção:</strong> não trabalhamos com carros 4x4 nem com parte elétrica.
+            </div>
+        </div>
+        <div class="hero-card">
+            <h3>Informações rápidas</h3>
+            <p><strong>Endereço:</strong> Av. Rotary, 667 - Gruta de Lourdes, Maceió - AL</p>
+            <p><strong>Telefones:</strong> (82) 3241-1214 • (82) 99906-3115</p>
+            <p><strong>CNPJ:</strong> 12.260.410/0001-50</p>
+        </div>
     </section>
 
     <section class="services-preview">
-        <h3>Principais Serviços</h3>
-        <ul>
-            <li th:each="s : ${services}">
+        <div class="section-title">
+            <h3>Principais serviços</h3>
+            <p>Foco total em mecânica tradicional e preventiva.</p>
+        </div>
+        <div class="services-grid">
+            <article th:each="s : ${mainServices}" class="service-card">
                 <h4 th:text="${s.name}"></h4>
                 <p th:text="${s.description}"></p>
-                <p><strong>Categoria:</strong> <span th:text="${s.category}"></span> — <strong>Preço:</strong> R$ <span th:text="${s.price}"></span></p>
-            </li>
-        </ul>
+                <p class="meta"><span th:text="${s.category}"></span> • R$ <span th:text="${s.price}"></span></p>
+            </article>
+        </div>
         <a class="btn" href="/services">Ver todos os serviços</a>
+    </section>
+
+    <section class="cta">
+        <div>
+            <h3>Precisa deixar seu carro com a gente?</h3>
+            <p>Faça um cadastro rápido com seus dados e o serviço desejado.</p>
+        </div>
+        <a class="btn" href="/cadastro">Cadastrar agora</a>
     </section>
 </main>
 </html>

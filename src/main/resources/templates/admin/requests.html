@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<title>Clientes - Admin</title>
+<main>
+    <section>
+        <h2>Cadastros de Clientes</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Placa</th>
+                <th>Telefone</th>
+                <th>Modelo</th>
+                <th>Serviço</th>
+                <th>Status</th>
+                <th>Atualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r : ${requests}">
+                <td th:text="${r.id}"></td>
+                <td th:text="${r.customerName}"></td>
+                <td th:text="${r.plate}"></td>
+                <td th:text="${r.phone}"></td>
+                <td th:text="${r.carModel}"></td>
+                <td th:text="${r.requestedService}"></td>
+                <td><span class="status" th:text="${r.status}"></span></td>
+                <td>
+                    <form class="inline-form" th:action="@{'/admin/requests/' + ${r.id} + '/status'}" method="post">
+                        <select name="status">
+                            <option th:selected="${r.status == 'Recebido'}">Recebido</option>
+                            <option th:selected="${r.status == 'Em análise'}">Em análise</option>
+                            <option th:selected="${r.status == 'Em andamento'}">Em andamento</option>
+                            <option th:selected="${r.status == 'Pronto'}">Pronto</option>
+                        </select>
+                        <button class="btn small" type="submit">Salvar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</html>

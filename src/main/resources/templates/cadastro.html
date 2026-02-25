@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
+<title>Cadastro - Santana Auto Mecânica</title>
+<main>
+    <section class="form-section">
+        <div class="section-title">
+            <h2>Cadastro do Cliente</h2>
+            <p>Preencha apenas os campos essenciais para agilizar o atendimento.</p>
+        </div>
+        <div class="notice">
+            <strong>Aviso:</strong> não trabalhamos com carros 4x4 nem com a parte elétrica.
+        </div>
+
+        <div th:if="${success}" class="success-box">
+            Cadastro enviado com sucesso. Protocolo: <strong th:text="${protocol}"></strong>.
+        </div>
+
+        <form method="post" action="/cadastro" class="form-grid">
+            <label>Nome</label>
+            <input name="nome" required />
+
+            <label>Placa</label>
+            <input name="placa" required />
+
+            <label>Telefone de contato</label>
+            <input name="telefone" required />
+
+            <label>Modelo do carro</label>
+            <input name="modelo" required />
+
+            <label>Serviço desejado</label>
+            <select name="servico" required>
+                <option value="" selected disabled>Selecione um serviço</option>
+                <option th:each="s : ${services}" th:value="${s.name}" th:text="${s.name}"></option>
+                <option value="Outro serviço mecânico">Outro serviço mecânico</option>
+            </select>
+
+            <button class="btn" type="submit">Enviar cadastro</button>
+        </form>
+    </section>
+</main>
+</html>

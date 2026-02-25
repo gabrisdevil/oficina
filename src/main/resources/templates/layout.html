@@ -1,32 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:replace="~{::title}">Santana Auto Mecanica</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#0b2340">
 </head>
 <body>
 <header class="site-header">
-    <div class="container">
-        <h1 class="brand">Santana Auto Mecânica</h1>
-        <nav>
+    <div class="top-strip">
+        <div class="container top-content">
+            <div>Contato: (82) 3241-1214 • (82) 99906-3115</div>
+            <div>Av. Rotary, 667 - Gruta de Lourdes, Maceió - AL</div>
+        </div>
+    </div>
+    <div class="container header-main">
+        <div class="brand-block">
+            <p class="eyebrow">Oficina mecânica tradicional</p>
+            <h1 class="brand">Santana Auto Mecânica</h1>
+            <p class="subtitle">Não trabalhamos com 4x4 nem com parte elétrica.</p>
+        </div>
+        <nav class="site-nav">
             <a href="/">Home</a>
             <a href="/services">Serviços</a>
+            <a href="/cadastro">Cadastro</a>
+            <a href="/historia">História</a>
             <a href="/admin">Admin</a>
         </nav>
     </div>
     <div class="accent"></div>
 </header>
 
-<main class="container">
+<main class="container main-content">
     <div th:replace="~{::main}"></div>
 </main>
 
 <footer class="site-footer">
-    <div class="container">© Santana Auto Mecânica — Em atividade desde 1975</div>
+    <div class="container footer-grid">
+        <div>
+            <h4>Santana Auto Mecânica</h4>
+            <p>CNPJ: 12.260.410/0001-50</p>
+        </div>
+        <div>
+            <h4>Endereço</h4>
+            <p>Av. Rotary, 667 - Gruta de Lourdes, Maceió - AL, 57052-480</p>
+        </div>
+        <div>
+            <h4>Contato</h4>
+            <p>(82) 3241-1214</p>
+            <p>(82) 99906-3115</p>
+        </div>
+    </div>
 </footer>
 
 </body>
